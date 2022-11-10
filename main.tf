@@ -1,6 +1,10 @@
 provider "aws" {
   region  = "us-east-1"
-  version = "~> 3.0"
+}
+
+provider "aws" {
+  alias = "west-2"
+  region  = "us-west-2"
 }
 
 terraform {
