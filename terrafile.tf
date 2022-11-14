@@ -1,6 +1,6 @@
 module "servers" {
     source = "./servers"
-    servers = 2
+    servers = 1
 }
 
 output "DNSName" {
