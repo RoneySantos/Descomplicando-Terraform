@@ -25,9 +25,11 @@ resource "aws_instance" "web" {
   count         = var.servers == "production" ? 2 : 1
   ami           = data.aws_ami.ubuntu.id
   instance_type = count.index < 1 ? "t2.micro" : "t3.medium"
+  # vpc_security_group_ids = var.sg
 
   tags = {
     Name = "HelloWorld"
+    Env = var.enviroment
   }
 }
 
