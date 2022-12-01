@@ -22,10 +22,16 @@ data "aws_ami" "ubuntu" {
 # }
 
 resource "aws_instance" "web" {
-  count         = var.servers == "production" ? 2 : 1
+  # count         = var.servers == "production" ? 2 : 1 #Remove to test for_each
   ami           = data.aws_ami.ubuntu.id
-  instance_type = count.index < 1 ? "t2.micro" : "t3.medium"
+  # instance_type = count.index < 1 ? "t2.micro" : "t3.medium"
   # vpc_security_group_ids = var.sg
+  # for_each = {
+  #   dev = "t2.micro"
+  #   staging = "t3.medium"
+  # } TEST 1 FOR_EACH
+  for_each = toset(var.instance_type)
+  instance_type = each.value
 
   tags = {
     Name = "HelloWorld"

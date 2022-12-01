@@ -17,3 +17,10 @@ variable "enviroment" {
 #   default = [ 1,2,3 ]
 #   description = "The list of SG for this instance"
 # }
+
+variable "instance_type" {
+    type = list(string)
+    default = [ "t2.micro", "t3.medium" ]
+    description = "the list of the instance type"
+  
+}
