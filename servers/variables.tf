@@ -20,7 +20,18 @@ variable "enviroment" {
 
 variable "instance_type" {
     type = list(string)
-    default = [ "t2.micro", "t3.medium" ]
+    # default = [ "t2.micro", "t3.medium" ] # duas instancias
+    default = [ "t2.micro" ]
     description = "the list of the instance type"
   
 }
+
+# variable "blocks" {
+#   type = list(object({
+#     device_name = string
+#     volume_size = number
+#     volume_type = string
+#   }))
+  
+#   description = "List of EBS Block"
+# }
